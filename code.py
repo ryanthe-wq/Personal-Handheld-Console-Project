@@ -1,17 +1,44 @@
-import busio
-import digitalio
-import board
 import time
-import adafruit_mcp3xxx.mcp3008 as MCP
-from adafruit_mcp3xxx.analog_in import AnalogIn
+import board
+import digitalio
+import usb_hid
+from hid_gamepad import Gamepad
 
-spi = busio.SPI(clock=board.GP18, MISO=board.GP16, MOSI=board.GP19)
-cs = digitalio.DigitalInOut(board.GP17)
-mcp = MCP.MCP3008(spi, cs)
+gp = Gamepad(usb_hid.devices)
 
-left_x = AnalogIn(mcp, MCP.P0)
-left_y = AnalogIn(mcp, MCP.P1)
+button_pins = [
+    (board.GP0, 1),
+    (board.GP1, 2),
+    (board.GP2, 3),
+    (board.GP3, 4),
+    (board.GP4, 5),
+    (board.GP5, 6),
+    (board.GP6, 7),
+    (board.GP7, 8),
+    (board.GP8, 9),
+    (board.GP9, 10),
+]
+
+buttons = []
+for pin, number in button_pins:
+    b = digitalio.DigitalInOut(pin)
+    b.direction = digitalio.Direction.INPUT
+    b.pull = digitalio.Pull.UP
+    buttons.append([b, number, True])
 
 while True:
-    print(left_x.value, left_y.value)
-    time.sleep(0.2)
+    for entry in buttons:
+        b, number, last_state = entry
+        current_state = b.value
+        if current_state != last_state:
+            time.sleep(0.02)
+            current_state = b.value
+            if current_state != last_state:
+                if current_state is False:
+                    gp.press_buttons(number)
+                    print("pressed", number)
+                else:
+                    gp.release_buttons(number)
+                    print("released", number)
+                entry[2] = current_state
+    time.sleep(0.01)

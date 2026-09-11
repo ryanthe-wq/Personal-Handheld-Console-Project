@@ -28,10 +28,6 @@ absolute_time_t next_button_read;
 
 enum : uint8_t { REPORT_ID_MOUSE = 1, REPORT_ID_GAMEPAD = 2 };
 
-// ====================================================================
-// MANDATORY TINYUSB USB DESCRIPTORS (Fixes "Device Not Recognized")
-// ====================================================================
-
 tusb_desc_device_t const desc_device = {
     .bLength            = sizeof(tusb_desc_device_t),
     .bDescriptorType    = TUSB_DESC_DEVICE,
@@ -40,8 +36,8 @@ tusb_desc_device_t const desc_device = {
     .bDeviceSubClass    = 0x00,
     .bDeviceProtocol    = 0x00,
     .bMaxPacketSize0    = CFG_TUD_ENDPOINT0_SIZE,
-    .idVendor           = 0xCAFE, // Generic Development VID
-    .idProduct          = 0x4005, // Generic Dev PID
+    .idVendor           = 0xCAFE, 
+    .idProduct          = 0x4005,
     .bcdDevice          = 0x0100,
     .iManufacturer      = 0x01,
     .iProduct           = 0x02,
@@ -77,10 +73,10 @@ extern "C" uint8_t const *tud_descriptor_configuration_cb(uint8_t index) {
 }
 
 char const* string_desc_arr[] = {
-    (const char[]) { 0x09, 0x04 }, // 0: Supported language is English (0x0409)
-    "Raspberry Pi",                // 1: Manufacturer
-    "Pico Gamepad/Mouse",          // 2: Product
-    "123456",                      // 3: Serials (Keep dummy or leave blank)
+    (const char[]) { 0x09, 0x04 },
+    "Raspberry Pi",                
+    "Pico Gamepad/Mouse",          
+    "123456",                      
 };
 
 static uint16_t _desc_str[32];
@@ -101,9 +97,6 @@ extern "C" uint16_t const* tud_descriptor_string_cb(uint8_t index, uint16_t lang
     return _desc_str;
 }
 
-// ====================================================================
-// GAMEPAD LOGIC & CORE FUNCTIONS
-// ====================================================================
 
 uint16_t read_mcp3008(uint8_t channel) {
     if (channel > 7) return 0;

@@ -1,6 +1,6 @@
 # Personal-Handheld-Console-Project
-This is circuit python code of a controller that i plan to use to make a personal handheld console with that is inspired from the Sony Viao UX and the PlayStation Vita.
-The code is run using Circuit Python and a Raspberry Pi Pico 2040.
+This is C/C++ code of a controller that i plan to use to make a personal handheld console with that is inspired from the Sony Viao UX and the PlayStation Vita.
+The code is run using C/C++ and a Raspberry Pi Pico 2040.
 The controller has 8 buttons and is run off a breadboard.
 The buttons run perfectly and I tested it with my raspberry pi 5 and it work flawlessly.
 I plan to code analog sticks into my code.py as well
@@ -20,7 +20,7 @@ The PCB's are 2 Layers PCB's with a schematic that goes along with it. It includ
 - Micro Controller: Raspberry pi Pico 2040 + MCP3008
 - Speakers: 2 Nintendo Switch speakers with MAX98357A's
 - Main Processing Unit: Raspberry pi 5 4gb
-- Coding Language used: Circuit Python
+- Coding Language used: C/C++cc   
 - Screen: 5-inch 960 x 544 AMOLED display
 - PCB software: Kicad
 - 3D-Modeling Software: Autodesk Fusion

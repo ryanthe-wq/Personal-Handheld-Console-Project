@@ -3,7 +3,6 @@ This is C/C++ code of a controller that i plan to use to make a personal handhel
 The code is run using C/C++ and a Raspberry Pi Pico 2040.
 The controller has 8 buttons and is run off a breadboard.
 The buttons run perfectly and I tested it with my raspberry pi 5 and it work flawlessly.
-I plan to code analog sticks into my code.py as well
 
 # What Was My Reason to Build this?
 I was always fascinated by the PlayStation Vita, as it had so much power and was almost a PS3 that could fit in your pocket. Something that also intrigued me was the Sony Viao UX handheld PC that had a flip up Keyboard and a mouse to use. My vision was to combine these 2 into a all around Gaming Console that could also be used as a PC. The dimensions would be similar to that of a PSVITA, only a little bigger: 204mm in length by 93mm in height by 32mm in width.  This console would be able to fit in your pocket and provide you any experience you could ask for, from emulating hefty games on the PSVITA's beautiful OLED Display or simply using it as a Linux computer that could fit in your pocket. It runs off a Raspberry pi 5 as i loved the credit card size of it and it gave me a lot of power for this build.
